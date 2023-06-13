@@ -1,0 +1,115 @@
+import os
+os.system("cls" if os.name == 'nt' else 'clear')
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def print_list(self):
+        if self.head is None:
+            print("Linked List kosong")
+        else:
+            current = self.head
+            while current:
+                print(current.data, end=" ")
+                current = current.next
+            print()
+
+    def ayam_umur_300(self):
+        if self.head is None:
+            print("Linked list is empty")
+            return
+        current = self.head
+        while current:
+            if current.data > 300 and current.data <= 600:
+                print(current.data)
+            current = current.next
+
+    def umur_ayam(self):
+        
+        if self.head is None:
+          print("Linked list is empty")
+          return
+        current = self.head
+        while current:
+          if current.data >= 300 :
+              print(f"Ayam dengan umur {current.data} minggu sudah dewasa")
+          else:
+              print(f"Ayam dengan umur {current.data} minggu belum dewasa")
+          current = current.next
+    
+
+    def bubble_sort(self):
+        if self.head is None:
+            return
+        length = 0
+        current = self.head
+        while current:
+            length += 1
+            current = current.next
+        for i in range(length - 1):
+            current = self.head
+            for j in range(length - 1 - i):
+                if current.data > current.next.data:
+                    current.data, current.next.data = current.next.data, current.data
+                current = current.next
+
+
+
+linked_list = LinkedList()
+
+linked_list.append(507)
+linked_list.append( 20)
+linked_list.append(241)
+linked_list.append(178)
+linked_list.append(3)
+linked_list.append(257)
+linked_list.append(488)
+linked_list.append(582)
+linked_list.append(357)
+linked_list.append(55)
+linked_list.append(419)
+linked_list.append(480)
+linked_list.append(232)
+linked_list.append(588)
+linked_list.append(362)
+linked_list.append(393)
+linked_list.append(115)
+linked_list.append(133)
+linked_list.append(509)
+linked_list.append(218)
+
+print('Data Seluruh Umur Ayam')
+linked_list.print_list()
+
+print(100*'=')
+
+linked_list.bubble_sort()
+print('Pengurutan Umur Ayam dari terkecil ke terbesar')
+linked_list.print_list()
+
+
+print(100*'=')
+print('Pengelompokan Umur Ayam Berdasarkan Minggu')
+linked_list.umur_ayam()
+
+print(100*'=')
+print('Pengurutan Ayam dengan Umur lebih dari 300 minggu dan Kurang dari 600 minggu')
+linked_list.ayam_umur_300()
+print('Umur Ayam Yang Sudah diseleksi')
+linked_list.print_list()
