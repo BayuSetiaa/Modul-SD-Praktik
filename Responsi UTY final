@@ -41,7 +41,6 @@ class LinkedList:
             current = current.next
 
     def umur_ayam(self):
-        
         if self.head is None:
           print("Linked list is empty")
           return
@@ -52,7 +51,6 @@ class LinkedList:
           else:
               print(f"Ayam dengan umur {current.data} minggu belum dewasa")
           current = current.next
-    
 
     def bubble_sort(self):
         if self.head is None:
@@ -69,7 +67,17 @@ class LinkedList:
                     current.data, current.next.data = current.next.data, current.data
                 current = current.next
 
-
+    def final_display(self):
+        if self.head is None:
+            print("Linked list is empty")
+            return
+        current = self.head
+        output = []
+        while current:
+            if current.data > 300 and current.data <= 600:
+                output.append(str(current.data))  
+            current = current.next
+        print(" ".join(output)) 
 
 linked_list = LinkedList()
 
@@ -112,4 +120,4 @@ print(100*'=')
 print('Pengurutan Ayam dengan Umur lebih dari 300 minggu dan Kurang dari 600 minggu')
 linked_list.ayam_umur_300()
 print('Umur Ayam Yang Sudah diseleksi')
-linked_list.print_list()
+linked_list.final_display()
